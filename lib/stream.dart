@@ -36,6 +36,10 @@ class NumberStream {
     controller.sink.add(newNumber);
   }
 
+  addError(){
+    controller.sink.addError("error");
+  }
+
   close() {
     // Menutup sink untuk menghentikan aliran data
     controller.close();
