@@ -96,6 +96,7 @@ await for (var eventColor in colorStream.getColors()) {
     }
 
 ```
+
 ##### Karakteristik:
 
 - Menggunakan sintaks async/await yang membutuhkan fungsi yang diawali dengan async
@@ -113,6 +114,7 @@ colorStream.getColors().listen((eventColor) {
       });
     });
 ```
+
 ##### Karakteristik:
 
 - Menggunakan pendekatan callback
@@ -122,6 +124,7 @@ colorStream.getColors().listen((eventColor) {
 - Cocok untuk stream yang terus berjalan (continuous stream)
 
 ##### Kesimpulan
+
 - Langkah 9 (await for) tidak ideal untuk stream tak terbatas seperti yang dihasilkan oleh getColors() karena akan memblokir eksekusi fungsi selamanya.
 
 - Langkah 13 (listen) adalah pendekatan yang lebih tepat untuk kasus ini, karena:
@@ -129,3 +132,60 @@ colorStream.getColors().listen((eventColor) {
 Tidak memblokir eksekusi fungsi
 Memungkinkan UI untuk tetap responsif
 Cocok untuk stream yang terus menghasilkan nilai tanpa batas waktu
+
+### Soal No 6
+
+Jelaskan maksud kode langkah 8 dan 10 tersebut!
+
+```dart
+//Langkah 8
+@override
+  void initState() {
+    numberStream = NumberStream();
+    NumberStreamController = numberStream.controller;
+    Stream stream = NumberStreamController.stream;
+    stream.listen((event) {
+      setState(() {
+        lastNumber = event;
+      });
+    });
+    super.initState();
+  }
+```
+
+#### Penjelasan
+
+1. Inisialisasi NumberStream: Membuat instance dari kelas NumberStream (yang sudah didefinisikan di stream.dart).
+
+2. Akses StreamController: Mengambil referensi controller dari numberStream dan menyimpannya dalam variabel NumberStreamController.
+
+3. Mendapatkan Stream: Mengakses stream dari controller, yang merupakan aliran data yang akan digunakan untuk menerima nilai.
+
+4. Listen Stream: Memasang listener pada stream menggunakan listen(). Setiap kali ada data baru di stream:
+
+- Callback function akan dipanggil dengan nilai baru (event)
+- Memanggil setState() untuk memperbarui UI
+- Menyimpan nilai baru ke dalam lastNumber
+
+5. Memanggil super.initState(): Menjalankan implementasi initState() dari kelas induk.
+
+```dart
+//Langkah 10
+void addRandomNumber() {
+    Random random = Random();
+    int myNum = random.nextInt(10);
+    numberStream.addNumberToSink(myNum);
+  }
+```
+
+#### Penjelasan
+
+1. Membuat Random Object: Membuat instance dari Random untuk menghasilkan angka acak.
+
+2. Menghasilkan Angka Acak: Menggunakan random.nextInt(10) untuk mendapatkan angka acak antara 0-9.
+
+3. Menambahkan ke Stream: Memanggil method addNumberToSink() dari numberStream dengan angka acak yang dihasilkan.
+
+#### Demo
+
+![Capture no 6](/images/captureno6.gif)
