@@ -1,16 +1,45 @@
-# stream_miftah
+# Tugas Flutter State Management dengan Streams
 
-A new Flutter project.
+Miftahudin Aldi Saputra - 1122140079
 
-## Getting Started
+## Deskripsi Proyek
 
-This project is a starting point for a Flutter application.
+Proyek Flutter yang mendemonstrasikan statre management dengan streams.
 
-A few resources to get you started if this is your first Flutter project:
+## Laporan Praktikum
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Soal no 1
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Menambahkan nama panggilan pada title app sebagai identitas hasil pekerjaan dan mengganti warna tema sesuai kesukaan.
+
+```dart
+ Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Stream Miftah',
+      theme: ThemeData(
+        Gantilah warna tema aplikasi sesuai kesukaan Anda.
+primarySwatch: Colors.lightGreen,
+      ),
+      home: const StreamHomePage(),
+    );
+ }
+```
+
+### Soal no 2
+
+Menambahkan 5 warna lainnya sesuai keinginan Anda pada variabel colors
+
+```dart
+ final List<Color> colors = [
+    Colors.blueGrey,
+    Colors.amber,
+    Colors.deepPurple,
+    Colors.lightBlue,
+    Colors.teal,
+    Colors.pink,
+    Colors.red,
+    Colors.green,
+    Colors.orange,
+    Colors.lime,
+  ];
+```

@@ -11,12 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
-     title: 'Stream Miftah',
+      title: 'Stream Miftah',
       theme: ThemeData(
-        primarySwatch:  Colors.lightGreen,
+        primarySwatch: Colors.lightGreen,
       ),
-      home: const StreamHomePage(), 
+      home: const StreamHomePage(),
     );
   }
 }
@@ -31,6 +30,6 @@ class StreamHomePage extends StatefulWidget {
 class _StreamHomePageState extends State<StreamHomePage> {
   @override
   Widget build(BuildContext context) {
-    return  Container();
+    return Container();
   }
 }
