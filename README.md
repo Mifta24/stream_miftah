@@ -74,3 +74,9 @@ Kode ini membuat sebuah stream yang:
 - Mengeluarkan warna dari array colors secara berurutan
 - Berganti warna setiap 1 detik
 - Setelah mencapai warna terakhir di array, kembali lagi ke - warna pertama (berputar)
+
+### Soal No 4
+
+#### Demo
+
+![Capture no 4](/images/captureno4.gif)
