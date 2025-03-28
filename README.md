@@ -43,3 +43,34 @@ Menambahkan 5 warna lainnya sesuai keinginan Anda pada variabel colors
     Colors.lime,
   ];
 ```
+
+### Soal No 3
+
+Jelaskan fungsi keyword yield\* pada kode tersebut!
+
+```dart
+ yield* Stream.periodic(const Duration(seconds: 1), (int t))
+```
+
+#### Penjelasan
+
+yield\* digunakan, ia mengambil seluruh nilai dari stream yang direferensikan dan meneruskannya satu per satu ke stream yang sedang dibuat.
+
+Apa maksud isi perintah kode tersebut?
+
+```dart
+ Stream<Color> getColors() async* {
+    yield* Stream.periodic(const Duration(seconds: 1), (int t) {
+      int index = t % colors.length;
+      return colors[index];
+    });
+  }
+```
+
+#### Penjelasan
+
+Kode ini membuat sebuah stream yang:
+
+- Mengeluarkan warna dari array colors secara berurutan
+- Berganti warna setiap 1 detik
+- Setelah mencapai warna terakhir di array, kembali lagi ke - warna pertama (berputar)

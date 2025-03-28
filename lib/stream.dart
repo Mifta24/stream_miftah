@@ -13,4 +13,14 @@ class ColorStream {
     Colors.orange,
     Colors.lime,
   ];
+
+// Untuk menghasilkan stream yang mengeluarkan warna secara berulang setiap detik
+  Stream<Color> getColors() async* {
+    // yield* digunakan untuk mengeluarkan nilai dari stream yang diberikan
+    // Stream.periodic() menghasilkan stream yang mengeluarkan nilai berulang setiap durasi yang diberikan
+    yield* Stream.periodic(const Duration(seconds: 1), (int t) {
+      int index = t % colors.length;
+      return colors[index];
+    });
+  }
 }
