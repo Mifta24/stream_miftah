@@ -379,3 +379,44 @@ int myNum = random.nextInt(10);
 #### Demo
 
 ![Capture no 9](/images/captureno9.gif)
+
+### Soal No 10
+
+```dart
+subscription = stream.listen((event) {
+  setState(() {
+    values += '$event - ';
+  });
+});
+subscription2 = stream.listen((event) {  // Error terjadi di sini
+  setState(() {
+    values += '$event - ';
+  });
+});
+
+```
+
+**Mengapa Error Ini Terjadi**
+Secara default, stream di Dart adalah "single-subscription", yang artinya:
+
+1. Stream hanya dapat memiliki satu listener pada satu waktu
+2. Setelah stream dilistener (dengan stream.listen()), stream tersebut tidak dapat dilistener lagi
+
+Ketika mencoba menambahkan listener kedua pada subscription2, Dart melempar error karena stream sudah didengarkan oleh subscription.
+
+### Soal NO 11
+**Jelaskan mengapa hal itu bisa terjadi ?**
+
+Ini terjadi karena menggunakan broadcast stream (melalui asBroadcastStream()) yang memungkinkan banyak listener, dan Saya telah mendaftarkan dua subcription listener yang melakukan hal yang sama: menambahkan angka ke variabel values.
+
+1. Saat tombol "New Random Number" ditekan, fungsi addRandomNumber() dipanggil
+2. Fungsi ini menghasilkan angka acak dan menambahkannya ke stream melalui numberStream.addNumberToSink(myNum)
+3. Ketika angka baru ditambahkan ke stream, semua listener akan dipanggil
+4. Dalam hal ini, Anda memiliki dua listener:
+- subscription menambahkan angka ke variabel values
+- subscription2 juga menambahkan angka yang sama ke variabel values
+5. Hasilnya, untuk satu angka acak yang dihasilkan, teks nilai ditambahkan dua kali
+
+#### Demo
+
+![Capture no 11](/images/captureno11.gif)
